@@ -188,9 +188,8 @@ See the `LICENSE` file for details.
 
 # 💬 Support
 
-- **Issues:** https://github.com/YOUR_USERNAME/DomainGuard/issues  
+- **Issues:** https://github.com/turalsuleymani/DomainGuard/issues  
 - **PRs:** Welcome  
-- **Wiki:** Coming soon  
 
 ---
 
