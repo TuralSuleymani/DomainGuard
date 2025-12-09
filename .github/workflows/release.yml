@@ -1,0 +1,37 @@
+name: Publish NuGet
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.0.x'
+
+    - name: Restore
+      run: dotnet restore
+
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+
+    - name: Pack
+      run: dotnet pack src/DomainGuard/DomainGuard.csproj \
+           --configuration Release \
+           --no-build \
+           /p:PackageVersion=${GITHUB_REF_NAME#v} \
+           --output ./artifacts
+
+    - name: Publish NuGet Package
+      run: dotnet nuget push "./artifacts/*.nupkg" \
+           --api-key ${{ secrets.NUGET_API_KEY }} \
+           --source https://api.nuget.org/v3/index.json

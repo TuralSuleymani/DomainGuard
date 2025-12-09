@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/src/">
+    <File Path="../../../../Users/TuralIntetics/Downloads/README.md" />
+    <File Path=".gitignore" />
+    <Project Path="src/DomainGuard/DomainGuard.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/DomainGuard.Tests.Unit/DomainGuard.Tests.Unit.csproj" />
+  </Folder>
+</Solution>

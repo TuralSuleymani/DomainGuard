@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+
+    <PackageId>DomainGuard</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Tural Suleymani</Authors>
+    <Company>VOE Consulting</Company>
+    <Description>Lightweight guard clause and validation helpers for C#, optimized for DDD and clean architecture.</Description>
+    <PackageTags>guard validation ddd clean-architecture ensure invariant</PackageTags>
+    <RepositoryUrl>https://github.com/TuralSuleymani/DomainGuard</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/TuralSuleymani/DomainGuard</PackageProjectUrl>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+
+</Project>
