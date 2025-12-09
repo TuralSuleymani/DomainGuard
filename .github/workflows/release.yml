@@ -1,9 +1,9 @@
-name: Publish NuGet
+name: Publish NuGet Package
 
 on:
   push:
     tags:
-      - 'v*.*.*'
+      - 'v*.*.*'   # Runs on tags like v1.0.0 or v1.2.3-preview.1
 
 jobs:
   publish:
@@ -24,14 +24,22 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release --no-restore
 
-    - name: Pack
-      run: dotnet pack src/DomainGuard/DomainGuard.csproj \
-           --configuration Release \
-           --no-build \
-           /p:PackageVersion=${GITHUB_REF_NAME#v} \
-           --output ./artifacts
+    # PACK STEP
+    - name: Pack NuGet Package
+      run: |
+        dotnet pack ./src/DomainGuard/DomainGuard.csproj \
+          -c Release \
+          --no-build \
+          -o ./artifacts \
+          /p:PackageVersion=${GITHUB_REF_NAME#v}
 
-    - name: Publish NuGet Package
+    # DEBUG: Show the artifact list
+    - name: List artifacts
+      run: ls -R ./artifacts
+
+    # PUBLISH STEP
+    - name: Push to NuGet
       run: dotnet nuget push "./artifacts/*.nupkg" \
-           --api-key ${{ secrets.NUGET_API_KEY }} \
-           --source https://api.nuget.org/v3/index.json
+             --api-key ${{ secrets.NUGET_API_KEY }} \
+             --source https://api.nuget.org/v3/index.json \
+             --skip-duplicate
